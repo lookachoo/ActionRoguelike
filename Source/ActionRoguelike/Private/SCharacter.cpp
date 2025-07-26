@@ -4,6 +4,7 @@
 #include "SCharacter.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Components/StaticMeshComponent.h"
 
 // Sets default values
 ASCharacter::ASCharacter()
@@ -16,6 +17,9 @@ ASCharacter::ASCharacter()
 
 	CameraComp = CreateDefaultSubobject<UCameraComponent>("CameraComp");
 	CameraComp->SetupAttachment(SpringArmComp);
+
+	MyMesh = CreateDefaultSubobject<UStaticMeshComponent>("MyMesh");
+	MyMesh->SetupAttachment(GetMesh());
 }
 
 // Called when the game starts or when spawned

@@ -24,6 +24,8 @@ protected:
 	USpringArmComponent* SpringArmComp;
 	UPROPERTY(VisibleAnywhere)
 	UCameraComponent* CameraComp;
+	UPROPERTY(VisibleAnywhere)
+	UStaticMeshComponent* MyMesh;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
