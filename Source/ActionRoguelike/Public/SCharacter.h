@@ -9,6 +9,7 @@
 class UCameraComponent;
 class USpringArmComponent;
 class USInteractionComponent;
+class UAnimMontage;
 
 UCLASS()
 class ACTIONROGUELIKE_API ASCharacter : public ACharacter
@@ -17,8 +18,16 @@ class ACTIONROGUELIKE_API ASCharacter : public ACharacter
 
 protected:
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, Category = "Attack")
 	TSubclassOf<AActor> ProjectileClass;
+
+	UPROPERTY(EditAnywhere, Category = "Attack")
+	UAnimMontage* AttackAnim;
+
+	UFUNCTION()
+	void OnPrimaryAttackNotify(FName NotifyName, const FBranchingPointNotifyPayload& BranchingPointPayload);
+
+	//FTimerHandle TimerHandle_PrimaryAttack;
 
 
 public:
@@ -38,6 +47,8 @@ protected:
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void PostInitializeComponents();
 
 	void MoveForward(float Value);
 
